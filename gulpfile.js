@@ -7,8 +7,8 @@ const mozjpeg = require("imagemin-mozjpeg");
 //画像圧縮
 gulp.task("imagemin", () => {
   return gulp
-    .src("./original/*.{png,jpg,jpeg,gif,svg}")
-    .pipe(changed("./compressed"))
+    .src("./src/*.{png,jpg,jpeg,gif,svg}")
+    .pipe(changed("./dist"))
     .pipe(
       imagemin([
         pngquant({
@@ -21,12 +21,12 @@ gulp.task("imagemin", () => {
         imagemin.gifsicle()
       ])
     )
-    .pipe(gulp.dest("./compressed"));
+    .pipe(gulp.dest("./dist"));
 });
 
 //ファイルの監視
 gulp.task("watch", () => {
-  gulp.watch("./original/*.{png,jpg,jpeg,gif,svg}", gulp.task("imagemin"));
+  gulp.watch("./src/*.{png,jpg,jpeg,gif,svg}", gulp.task("imagemin"));
 });
 
 //デフォルトのタスク作成
