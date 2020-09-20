@@ -2,3 +2,4 @@
 /src/
 /dist/
 .vscode
+.DS_Store
